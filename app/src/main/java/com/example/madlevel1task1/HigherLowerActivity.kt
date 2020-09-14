@@ -11,11 +11,13 @@ class HigherLowerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHigherLowerBinding
     private var currentThrow: Int = 1
     private var lastThrow: Int = 1
+    private var diceimages = arrayOf(R.drawable.dice1, R.drawable.dice2,R.drawable.dice3,R.drawable.dice4,R.drawable.dice5, R.drawable.dice6)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHigherLowerBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_higher_lower)
+        setContentView(binding.root)
+        initViews()
     }
 
     fun initViews(){
@@ -23,9 +25,12 @@ class HigherLowerActivity : AppCompatActivity() {
         binding.btnEqual.setOnClickListener(){ onEqualClick() }
         binding.btnHigher.setOnClickListener(){ onHigherClick() }
         binding.btnLower.setOnClickListener(){ onLowerClick() }
+        binding.diceImage.setOnClickListener(){updateUI()}
     }
     fun updateUI(){
         binding.lastThrowText.text = getString(R.string.last_throw, lastThrow)
+        binding.diceImage.setImageResource(diceimages[lastThrow-1])
+
     }
 
     private fun rollDice() {
@@ -69,13 +74,13 @@ class HigherLowerActivity : AppCompatActivity() {
 
     private fun onAnswerCorrect() {
         //Implement this function yourself!
-        Toast.makeText(this, getString(R.string.correctanswer),Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.correctanswer) +currentThrow,Toast.LENGTH_SHORT).show()
     }
 
     /**
      * Displays an incorrect Toast message.
      */
     private fun onAnswerIncorrect() {
-        Toast.makeText(this, getString(R.string.incorrectanswer),Toast.LENGTH_SHORT).show()
-    }
+        Toast.makeText(this, getString(R.string.incorrectanswer) +currentThrow,Toast.LENGTH_SHORT).show()
+        }
 }
