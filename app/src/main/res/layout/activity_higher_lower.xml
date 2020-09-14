@@ -48,7 +48,8 @@
         android:layout_height="63dp"
         android:text="@string/btn_text_lower"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <Button
         android:id="@+id/btn_equal"

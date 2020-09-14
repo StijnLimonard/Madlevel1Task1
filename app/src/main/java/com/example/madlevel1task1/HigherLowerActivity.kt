@@ -18,6 +18,12 @@ class HigherLowerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_higher_lower)
     }
 
+    fun initViews(){
+        updateUI()
+        binding.btnEqual.setOnClickListener(){ onEqualClick() }
+        binding.btnHigher.setOnClickListener(){ onHigherClick() }
+        binding.btnLower.setOnClickListener(){ onLowerClick() }
+    }
     fun updateUI(){
         binding.lastThrowText.text = getString(R.string.last_throw, lastThrow)
     }
